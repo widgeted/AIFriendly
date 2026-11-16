@@ -128,38 +128,46 @@ decorative: it answers "how much is left" on long pages.
 ## Palettes
 
 - Spectrum ribbon: header/footer, hero, mark section, badge lockups, seals,
-  statements, verified, OG, poster.
+  statements, verified, OG, poster. Spectrum accent gradients (verified frame,
+  underline rules) run on the diagonal — 135°, top-left amber to bottom-right
+  indigo — never a flat left-to-right ramp.
 - Flat two-tone (`mark-flat-cream` / `lockup-flat-cream`): cream fills
   (#fff6e7 spark + ribbon, #fffaf1 inner ribbon) with an ink #171008 outline,
-  no dot. For posters, gradient tiles and any complex colourful surface: one
-  silhouette would melt into the background, so boundaries are drawn.
+  no dot. For gradient tiles and other colourful surfaces: one silhouette
+  would melt into the background, so boundaries are drawn.
+- Poster two-colour (`mark-poster`): cream #fff6e7 spark, ink #171008 ring,
+  ink outline, no dot. For printed posters and any busy photographic or
+  gradient surface where the spark and the ring must read as two shapes.
 - Mono: favicon and 64px icons, no ember dot. The geometry is the same; the
   mono palette exists so the ribbon does not turn into mud at the smallest
   sizes.
 - Dark surfaces: cream spark, ink stroke, light ribbon, ember dot.
 - Light surfaces: ink spark, paper/white stroke, spectrum or drift ribbon.
 
-## Mark motion
+## Mark structure and motion
 
+- Layer order is the whole trick and must not change: **spark back piece →
+  ribbon ring → dot → spark front piece**. The spark is drawn twice: the back
+  copy carries fill and outline under the ring, the front copy is fill-only,
+  clipped (by a polygon whose edge runs through the ring's hole) to the
+  upper-left half. The two halves have the same fill, so their junction is
+  invisible and never crosses the drawn ribbon. Nothing fades and no mask is
+  used: whatever passes behind the spark is covered by the front piece.
 - The ember dot is omitted below 96px: header/footer 30–36px, favicon, icons,
   lockups (40), statement badges (34) and seals (72) all ship without it. It
   is always present and always ember #DC5000 at 96px and above.
 - At display sizes (≥ 200px, currently hero 460px and the mark section 420px)
-  the mark is alive. The dot rides the ribbon: its track is the ribbon's true
-  centreline, computed from the artwork's own geometry (cross-section pairing
-  of the band's two edges; every track point is verified to lie on the band)
-  and emitted as a closed path in `mark_svg()` (`app/ui.php`) — SMIL
-  `animateMotion` + `mpath`, `calcMode="paced"`, 14s, the same clock as the
-  gradient swirl. Occlusion is real, not a fade: the dot layer carries an SVG
-  mask (`maskUnits="userSpaceOnUse"`) = white canvas + black spark silhouette,
-  minus a white-stroked re-open corridor along the arc where the band crosses
-  in front of the spark (the star's deep SE dip splits that crossing into two
-  patches; the corridor covers both). Passing the band's pointed tip the dot
-  is clipped by the silhouette edge into a shrinking crescent, stays fully
-  hidden along the behind-stretch (which runs ≥ 17 units inside the edge, so
-  the 15.7-radius dot never peeks), and re-emerges as a growing crescent at
-  the left tip. The two ribbon gradients rotate 14s via SMIL
-  `animateTransform` on `gradientTransform`.
+  the mark is alive. The dot rides the ring's complete loop, computed from the
+  artwork's own geometry and verified to lie on the ring everywhere: band
+  (home → elbow), top strip to the pointed tip, behind the spark's upper
+  spike, the crescent (the ring's far side), behind the left spike, and back
+  along the band. SMIL `animateMotion` + `mpath`, `calcMode="paced"`, 14s, the
+  same clock as the gradient swirl. As the dot reaches the pointed tip it is
+  cut by the front piece into a shrinking crescent; it disappears behind the
+  upper spike, rides the crescent with its inner half behind the spark's edge,
+  slips behind the thin left spike and comes out as a growing crescent at the
+  left tip. The two ribbon gradients rotate 14s via SMIL `animateTransform` on
+  `gradientTransform`.
 - Motion is one system: dot and colour travel the same direction at the same
   period, so it reads as orbit, not decoration.
 - Hovering the header brand makes the ribbon's spectrum flow (CSS

@@ -446,7 +446,7 @@ return [
             'items' => [
                 ['A3 / print', 'Poster', '“Open to AI. Accountable to humans.” A3, vector, with the mark and the short manifesto.', 'Poster SVG', '/assets/brand/poster-a3.svg', 'PDF', '/assets/brand/poster-a3.pdf'],
                 ['1200 × 630', 'Social card', 'For link previews, announcement posts and slides. English and Chinese versions.', 'EN SVG', '/assets/brand/social-en.svg', '中文 SVG', '/assets/brand/social-zh.svg'],
-                ['Standalone', 'The mark', 'The spark and ribbon orbit without the wordmark. Spectrum SVG for light and dark surfaces, plus a flat two-tone version (cream fills, ink outline) for posters and colourful surfaces.', 'SVG light', '/assets/brand/mark.svg', 'SVG dark', '/assets/brand/mark-cream.svg', 'SVG flat', '/assets/brand/mark-flat-cream.svg'],
+                ['Standalone', 'The mark', 'The spark and ribbon orbit without the wordmark. Spectrum SVG for light and dark surfaces, plus a flat two-tone version (cream fills, ink outline) for colourful surfaces and a two-colour poster version (cream spark, ink ring) for printed posters.', 'SVG light', '/assets/brand/mark.svg', 'SVG dark', '/assets/brand/mark-cream.svg', 'SVG flat', '/assets/brand/mark-flat-cream.svg', 'SVG poster', '/assets/brand/mark-poster.svg'],
             ],
         ],
         'note' => '<strong>No permission needed.</strong> The self-declared badges are free for personal and commercial use under the <a href="{license}">AI Friendly Mark License</a>. No attribution required. Do not alter the files, and do not use the verified badge unless you have a current listing.',

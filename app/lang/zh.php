@@ -446,7 +446,7 @@ return [
             'items' => [
                 ['A3 / 印刷', '海报', '“对 AI 开放。对人类负责。” A3 矢量海报，含标志与简短宣言。', '海报 SVG', '/assets/brand/poster-a3.svg', 'PDF', '/assets/brand/poster-a3.pdf'],
                 ['1200 × 630', '社交卡片', '用于链接预览、发布图和幻灯片。提供英文与中文版本。', '英文 SVG', '/assets/brand/social-en.svg', '中文 SVG', '/assets/brand/social-zh.svg'],
-                ['独立标志', '标志', '不带字标的火花与带状轨道。提供适合浅色与深色底的光谱版本，以及用于海报等彩色底面的双色剪影版本（奶油填充、墨色描边）。', 'SVG 浅色', '/assets/brand/mark.svg', 'SVG 深色', '/assets/brand/mark-cream.svg', 'SVG 双色', '/assets/brand/mark-flat-cream.svg'],
+                ['独立标志', '标志', '不带字标的火花与带状轨道。提供适合浅色与深色底的光谱版本、用于彩色底面的双色剪影版本（奶油填充、墨色描边），以及用于印刷海报的双色版本（奶油火花、墨色圆环）。', 'SVG 浅色', '/assets/brand/mark.svg', 'SVG 深色', '/assets/brand/mark-cream.svg', 'SVG 双色', '/assets/brand/mark-flat-cream.svg', 'SVG 海报', '/assets/brand/mark-poster.svg'],
             ],
         ],
         'note' => '<strong>无需申请。</strong>自我声明徽章依据 <a href="{license}">AI Friendly 标志许可</a> 免费用于个人和商业项目，无需署名。不要修改文件，也不要在没有当前列表的情况下使用认证徽章。',
