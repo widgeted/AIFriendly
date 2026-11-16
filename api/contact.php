@@ -64,6 +64,18 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'POST') {
     header('Allow: POST');
     form_fail(405, $m['method']);
 }
+// Same-origin check: the posting page must be this site. Closes cross-site
+// form abuse without needing a session or token (the site keeps no cookies).
+$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+$referer = $_SERVER['HTTP_REFERER'] ?? '';
+$allowedHost = 'https://aifriendly.fyi';
+if ($origin !== '') {
+    if (rtrim($origin, '/') !== $allowedHost) {
+        form_fail(403, $m['method']);
+    }
+} elseif ($referer !== '' && !str_starts_with($referer, $allowedHost . '/')) {
+    form_fail(403, $m['method']);
+}
 if (!rate_limit('form', FORM_LIMIT, 3600, true)) {
     header('Retry-After: 600');
     form_fail(429, $m['rate']);
