@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://aifriendly.fyi/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aifriendly.fyi/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aifriendly.fyi/zh/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aifriendly.fyi/"/>
+  </url>
+  <url>
+    <loc>https://aifriendly.fyi/zh/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aifriendly.fyi/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aifriendly.fyi/zh/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aifriendly.fyi/"/>
+  </url>
+  <url>
+    <loc>https://aifriendly.fyi/standard/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aifriendly.fyi/standard/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aifriendly.fyi/zh/standard/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aifriendly.fyi/standard/"/>
+  </url>
+  <url>
+    <loc>https://aifriendly.fyi/zh/standard/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aifriendly.fyi/standard/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aifriendly.fyi/zh/standard/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aifriendly.fyi/standard/"/>
+  </url>
+  <url>
+    <loc>https://aifriendly.fyi/badges/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aifriendly.fyi/badges/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aifriendly.fyi/zh/badges/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aifriendly.fyi/badges/"/>
+  </url>
+  <url>
+    <loc>https://aifriendly.fyi/zh/badges/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aifriendly.fyi/badges/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aifriendly.fyi/zh/badges/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aifriendly.fyi/badges/"/>
+  </url>
+  <url>
+    <loc>https://aifriendly.fyi/scan/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aifriendly.fyi/scan/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aifriendly.fyi/zh/scan/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aifriendly.fyi/scan/"/>
+  </url>
+  <url>
+    <loc>https://aifriendly.fyi/zh/scan/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aifriendly.fyi/scan/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aifriendly.fyi/zh/scan/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aifriendly.fyi/scan/"/>
+  </url>
+  <url>
+    <loc>https://aifriendly.fyi/resources/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aifriendly.fyi/resources/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aifriendly.fyi/zh/resources/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aifriendly.fyi/resources/"/>
+  </url>
+  <url>
+    <loc>https://aifriendly.fyi/zh/resources/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aifriendly.fyi/resources/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aifriendly.fyi/zh/resources/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aifriendly.fyi/resources/"/>
+  </url>
+  <url>
+    <loc>https://aifriendly.fyi/about/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aifriendly.fyi/about/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aifriendly.fyi/zh/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aifriendly.fyi/about/"/>
+  </url>
+  <url>
+    <loc>https://aifriendly.fyi/zh/about/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aifriendly.fyi/about/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aifriendly.fyi/zh/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aifriendly.fyi/about/"/>
+  </url>
+  <url>
+    <loc>https://aifriendly.fyi/verify/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aifriendly.fyi/verify/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aifriendly.fyi/zh/verify/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aifriendly.fyi/verify/"/>
+  </url>
+  <url>
+    <loc>https://aifriendly.fyi/zh/verify/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aifriendly.fyi/verify/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aifriendly.fyi/zh/verify/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aifriendly.fyi/verify/"/>
+  </url>
+  <url>
+    <loc>https://aifriendly.fyi/gallery/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aifriendly.fyi/gallery/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aifriendly.fyi/zh/gallery/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aifriendly.fyi/gallery/"/>
+  </url>
+  <url>
+    <loc>https://aifriendly.fyi/zh/gallery/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aifriendly.fyi/gallery/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aifriendly.fyi/zh/gallery/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aifriendly.fyi/gallery/"/>
+  </url>
+  <url>
+    <loc>https://aifriendly.fyi/license/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aifriendly.fyi/license/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aifriendly.fyi/zh/license/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aifriendly.fyi/license/"/>
+  </url>
+  <url>
+    <loc>https://aifriendly.fyi/zh/license/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aifriendly.fyi/license/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aifriendly.fyi/zh/license/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aifriendly.fyi/license/"/>
+  </url>
+  <url>
+    <loc>https://aifriendly.fyi/privacy/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aifriendly.fyi/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aifriendly.fyi/zh/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aifriendly.fyi/privacy/"/>
+  </url>
+  <url>
+    <loc>https://aifriendly.fyi/zh/privacy/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aifriendly.fyi/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aifriendly.fyi/zh/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aifriendly.fyi/privacy/"/>
+  </url>
+  <url>
+    <loc>https://aifriendly.fyi/terms/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aifriendly.fyi/terms/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aifriendly.fyi/zh/terms/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aifriendly.fyi/terms/"/>
+  </url>
+  <url>
+    <loc>https://aifriendly.fyi/zh/terms/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aifriendly.fyi/terms/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aifriendly.fyi/zh/terms/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aifriendly.fyi/terms/"/>
+  </url>
+</urlset>

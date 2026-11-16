@@ -1,0 +1,6 @@
+Contact: https://aifriendly.fyi/about/#contact
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: en, zh-Hans
+Canonical: https://aifriendly.fyi/.well-known/security.txt
+Policy: https://aifriendly.fyi/terms/
+Acknowledgments: https://aifriendly.fyi/about/

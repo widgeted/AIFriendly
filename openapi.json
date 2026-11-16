@@ -1,0 +1,478 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "AI Friendly API",
+    "version": "1.1.0",
+    "summary": "Heuristic site scan and contact endpoints for aifriendly.fyi.",
+    "description": "The public API behind the AI Friendly site scanner. The scan is a heuristic of 18 public signals, not a certification. Rate limits apply per client IP: 30 scans per hour and 6 form submissions per hour. Pass lang=zh for Chinese check labels.",
+    "termsOfService": "https://aifriendly.fyi/terms/",
+    "contact": {
+      "name": "AI Friendly",
+      "url": "https://aifriendly.fyi/about/#contact"
+    },
+    "license": {
+      "name": "CC BY 4.0",
+      "identifier": "CC-BY-4.0"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://aifriendly.fyi"
+    }
+  ],
+  "security": [],
+  "paths": {
+    "/api/scan.php": {
+      "get": {
+        "summary": "Scan a public website",
+        "description": "Fetches one public HTML page and a small set of well-known files (robots.txt, sitemap.xml, llms.txt, security.txt, OpenAPI). It never authenticates, submits forms or accesses private data. Results are cached for six hours under a hash of the URL.",
+        "operationId": "scanSite",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "description": "The public http or https URL to scan. If the scheme is omitted, https is assumed.",
+            "schema": {
+              "type": "string",
+              "format": "uri",
+              "maxLength": 2048
+            },
+            "example": "https://example.com/"
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "required": false,
+            "description": "Language for check labels and error messages.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "en",
+                "zh"
+              ],
+              "default": "en"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A completed heuristic scan.",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Always no-store."
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScanResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing or invalid URL.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method not allowed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The target returned an error or not HTML.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limited.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "The target could not be reached.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/contact.php": {
+      "post": {
+        "summary": "Send a message, verification application or placement",
+        "description": "Stores the submission on the AI Friendly server so a human can read it. No third-party processors. A hidden honeypot field named 'website' must be left empty.",
+        "operationId": "postForm",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "type",
+                  "name",
+                  "email"
+                ],
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "contact",
+                      "verify",
+                      "gallery"
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 200
+                  },
+                  "subject": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "maxLength": 300
+                  },
+                  "message": {
+                    "type": "string",
+                    "maxLength": 5000
+                  },
+                  "evidence": {
+                    "type": "string",
+                    "maxLength": 5000
+                  },
+                  "website": {
+                    "type": "string",
+                    "description": "Honeypot. Leave empty."
+                  },
+                  "lang": {
+                    "type": "string",
+                    "enum": [
+                      "en",
+                      "zh"
+                    ],
+                    "default": "en",
+                    "description": "Language for the response message."
+                  }
+                }
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "type",
+                  "name",
+                  "email"
+                ],
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "contact",
+                      "verify",
+                      "gallery"
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 200
+                  },
+                  "subject": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "maxLength": 300
+                  },
+                  "message": {
+                    "type": "string",
+                    "maxLength": 5000
+                  },
+                  "evidence": {
+                    "type": "string",
+                    "maxLength": 5000
+                  },
+                  "website": {
+                    "type": "string",
+                    "description": "Honeypot. Leave empty."
+                  },
+                  "lang": {
+                    "type": "string",
+                    "enum": [
+                      "en",
+                      "zh"
+                    ],
+                    "default": "en",
+                    "description": "Language for the response message."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Stored.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unknown form type.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limited.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ScanResult": {
+        "type": "object",
+        "required": [
+          "ok",
+          "url",
+          "final_url",
+          "score",
+          "grade",
+          "summary",
+          "level",
+          "categories",
+          "checks",
+          "scanned_at"
+        ],
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "const": true
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "final_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "score": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "grade": {
+            "type": "string",
+            "description": "Localized grade label (English or Chinese depending on lang)."
+          },
+          "summary": {
+            "type": "string"
+          },
+          "level": {
+            "type": "string",
+            "description": "Localized level hint (English or Chinese depending on lang)."
+          },
+          "categories": {
+            "type": "object",
+            "properties": {
+              "read": {
+                "$ref": "#/components/schemas/Category"
+              },
+              "discover": {
+                "$ref": "#/components/schemas/Category"
+              },
+              "operate": {
+                "$ref": "#/components/schemas/Category"
+              },
+              "trust": {
+                "$ref": "#/components/schemas/Category"
+              }
+            }
+          },
+          "checks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Check"
+            }
+          },
+          "scanned_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "cached": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Category": {
+        "type": "object",
+        "required": [
+          "score",
+          "max"
+        ],
+        "properties": {
+          "score": {
+            "type": "integer"
+          },
+          "max": {
+            "type": "integer"
+          }
+        }
+      },
+      "Check": {
+        "type": "object",
+        "required": [
+          "id",
+          "category",
+          "label",
+          "weight",
+          "status",
+          "detail"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "read",
+              "discover",
+              "operate",
+              "trust"
+            ]
+          },
+          "label": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "number"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pass",
+              "warn",
+              "fail"
+            ]
+          },
+          "detail": {
+            "type": "string"
+          },
+          "fix": {
+            "type": "string"
+          },
+          "standard": {
+            "type": "string",
+            "description": "Anchor of the corresponding check in the standard, e.g. r3 or a1."
+          }
+        }
+      },
+      "FormResult": {
+        "type": "object",
+        "required": [
+          "ok",
+          "message"
+        ],
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "const": true
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "ok",
+          "error"
+        ],
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "const": false
+          },
+          "error": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

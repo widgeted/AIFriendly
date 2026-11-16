@@ -1,0 +1,57 @@
+# AI Friendly
+
+> A free mark and an open standard for the AI-positive web. Open to AI, accountable to humans. Available in English and Simplified Chinese.
+
+AI Friendly publishes a free badge kit for sites, apps, posters and repositories that welcome AI, plus The AI Friendly Standard v0.1: 24 practical checks for making a website or online service legible, operable and safe for AI agents. The mark is free for personal and commercial use. The standard is CC BY 4.0. There is no account, no tracking and no AI detection.
+
+Canonical domain: https://aifriendly.fyi
+Languages: English (/), 简体中文 (/zh/)
+Contact: https://aifriendly.fyi/about/#contact
+
+## English
+
+- [Home](https://aifriendly.fyi/): the project, the mark and the three levels.
+- [The standard](https://aifriendly.fyi/standard/): 24 checks across readable, actionable and agent-ready levels.
+- [Self-audit](https://aifriendly.fyi/standard/#audit): the checklist with a local score. Nothing is sent.
+- [Badge kit](https://aifriendly.fyi/badges/): SVG and PNG marks, embed snippets, usage guidelines.
+- [Site scan](https://aifriendly.fyi/scan/): a free heuristic scan of 18 public signals.
+- [Resources](https://aifriendly.fyi/resources/): robots.txt, llms.txt, JSON-LD, security.txt and OpenAPI starters.
+- [Verified mark](https://aifriendly.fyi/verify/): reviewed certification, in beta.
+
+## 简体中文
+
+- [首页](https://aifriendly.fyi/zh/)：项目、标志与三个等级。
+- [标准](https://aifriendly.fyi/zh/standard/)：可读、可操作、智能体可用，共 24 项检查。
+- [自检](https://aifriendly.fyi/zh/standard/#audit)：本地计分清单，不会上传。
+- [徽章套件](https://aifriendly.fyi/zh/badges/)：SVG 与 PNG 标志、嵌入代码与使用规范。
+- [网站扫描](https://aifriendly.fyi/zh/scan/)：免费检查 18 个公开信号。
+- [资源](https://aifriendly.fyi/zh/resources/)：robots.txt、llms.txt、JSON-LD、security.txt 和 OpenAPI 起始文件。
+- [认证徽章](https://aifriendly.fyi/zh/verify/)：经过审核的认证，Beta 中。
+
+## The standard at a glance
+
+- Level 1 — Readable: server-rendered content, semantic HTML, metadata, canonical URLs, robots.txt, sitemap, explicit AI crawler policy, structured data, text alternatives, open access to public content.
+- Level 2 — Actionable: a documented API or feed, a standard API description, machine-readable pricing, stable identifiers, agent-usable authentication, rate limits and standard errors, a contact route for agent issues.
+- Level 3 — Agent-ready: a tool manifest or MCP server, scoped permissions and human confirmation, audit logs, export and deletion, provenance and AI disclosure, security baseline, WCAG 2.2 AA.
+
+## Policies
+
+- [License](https://aifriendly.fyi/license/): mark license, CC BY 4.0 standard, CC0 starters.
+- [Privacy](https://aifriendly.fyi/privacy/): no analytics, no cookies, no third-party requests.
+- [Terms](https://aifriendly.fyi/terms/): use of the site, scanner and verification programme.
+
+## Machine-readable
+
+- [Sitemap](https://aifriendly.fyi/sitemap.xml)
+- [robots.txt](https://aifriendly.fyi/robots.txt)
+- [security.txt](https://aifriendly.fyi/.well-known/security.txt)
+- [OpenAPI 3.1](https://aifriendly.fyi/openapi.json)
+- [Standard Markdown (EN)](https://aifriendly.fyi/assets/kit/standard.md)
+- [标准 Markdown（中文）](https://aifriendly.fyi/assets/kit/standard-zh.md)
+- Scanner API: GET https://aifriendly.fyi/api/scan.php?url=https%3A%2F%2Faifriendly.fyi%2F&lang=en (or lang=zh)
+
+## Notes
+
+- AI Friendly does not run AI detection and cannot tell you who wrote a page.
+- The badge is a claim. Only the verified badge is reviewed.
+- The mark is not a content licence. Your terms and robots.txt still govern what machines may do.

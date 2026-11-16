@@ -1,0 +1,28 @@
+# robots.txt — AI Friendly starter
+# Replace example.com. Keep this file at the site root.
+# To opt out of an agent, change its "Allow: /" to "Disallow: /".
+# To opt out of all AI crawling, use "User-agent: * / Disallow: /" and
+# keep specific allows for search crawlers if you need them.
+
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://example.com/sitemap.xml

@@ -1,0 +1,22 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://example.com/#org",
+      "name": "Example Company",
+      "url": "https://example.com/",
+      "logo": "https://example.com/logo.png",
+      "description": "What the organisation does, in one sentence.",
+      "sameAs": ["https://github.com/example"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com/#site",
+      "url": "https://example.com/",
+      "name": "Example Company",
+      "publisher": { "@id": "https://example.com/#org" },
+      "inLanguage": "en"
+    }
+  ]
+}

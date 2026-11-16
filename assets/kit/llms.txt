@@ -1,0 +1,20 @@
+# Example Company
+
+> One sentence that explains what this site is and who it is for.
+
+Key facts: founded in 2021, based in Lisbon, API available at /v1.
+Canonical domain: https://example.com
+
+## Docs
+- [Getting started](https://example.com/docs/start): install, auth, first request.
+- [API reference](https://example.com/docs/api): endpoints, scopes, rate limits.
+- [Pricing](https://example.com/pricing): plans, limits, overage.
+
+## Policies
+- [AI crawler policy](https://example.com/ai-policy): what is allowed and why.
+- [Privacy](https://example.com/privacy): what we collect, what we do not.
+- [Terms](https://example.com/terms): the contract.
+
+## Optional
+- [Changelog](https://example.com/changelog): versioned changes.
+- [Status](https://example.com/status): current availability.
