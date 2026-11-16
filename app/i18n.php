@@ -107,7 +107,3 @@ function switch_url(string $targetLang): string
     return lang_url($targetLang, $pagePath) . $query;
 }
 
-function is_zh(): bool
-{
-    return ($GLOBALS['lang'] ?? 'en') === 'zh';
-}

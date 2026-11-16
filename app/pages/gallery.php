@@ -35,7 +35,7 @@ $g = $T['gallery'];
             <div class="mock__screen"><span class="mock__notch"></span><img loading="lazy" decoding="async" class="mock__appicon" src="/assets/badges/icon-paper.svg" width="36" height="36" alt=""><p class="mock__title">Fieldnotes</p><span class="mock__line"></span><span class="mock__line mock__line--short"></span><img loading="lazy" decoding="async" class="mock__badge" src="/assets/badges/lockup-ink.svg" width="92" height="26" alt=""></div>
           </div>
           <?php elseif ($type === 'poster'): ?>
-          <div class="mock mock--poster" aria-hidden="true"><img loading="lazy" decoding="async" src="/assets/brand/mark-cream.svg" width="120" height="120" alt=""><span>AI FRIENDLY</span></div>
+          <div class="mock mock--poster" aria-hidden="true"><img loading="lazy" decoding="async" src="/assets/brand/mark-flat-cream.svg" width="120" height="120" alt=""><span>AI FRIENDLY</span></div>
           <?php elseif ($type === 'readme'): ?>
           <div class="mock mock--readme" aria-hidden="true">
             <div class="mock__bar"><i></i><i></i><i></i><span>README.md</span></div>

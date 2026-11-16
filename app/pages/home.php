@@ -215,7 +215,7 @@ foreach ($homeFaqs as $item) {
           </div>
           <?php else: ?>
           <div class="mock mock--poster" aria-hidden="true">
-            <img loading="lazy" decoding="async" src="/assets/brand/mark-cream.svg" width="120" height="120" alt="">
+            <img loading="lazy" decoding="async" src="/assets/brand/mark-flat-cream.svg" width="120" height="120" alt="">
             <span>AI FRIENDLY</span>
           </div>
           <?php endif; ?>

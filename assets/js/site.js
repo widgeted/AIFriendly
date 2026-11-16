@@ -108,6 +108,34 @@ window.__AF_READY = true;
     }
   }
 
+  /* ---------- scroll spy: mark the current section in the side TOC ---------- */
+  (() => {
+    const links = $$('.side-toc a[href^="#"]');
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    const map = new Map();
+    links.forEach((a) => {
+      const target = document.getElementById(a.getAttribute('href').slice(1));
+      if (target) map.set(target, a);
+    });
+    if (!map.size) return;
+    const clear = () => links.forEach((a) => a.classList.remove('is-active'));
+    let current = null;
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const link = map.get(entry.target);
+        if (!link || link === current) return;
+        current = link;
+        clear();
+        link.classList.add('is-active');
+      });
+    }, { rootMargin: '-104px 0px -55% 0px', threshold: 0 });
+    map.forEach((_, target) => spy.observe(target));
+    window.addEventListener('scroll', () => {
+      if (window.scrollY < 160 && current) { current = null; clear(); }
+    }, { passive: true });
+  })();
+
   /* ---------- clipboard ---------- */
   const copyText = async (text) => {
     try {

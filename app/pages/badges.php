@@ -19,7 +19,7 @@ $badges = require APP_ROOT . '/data/badges.php';
     <div class="badge-preview" aria-hidden="true">
       <div class="badge-preview__tile badge-preview__tile--paper"><img src="/assets/badges/lockup-ink.svg" width="159" height="44" alt=""></div>
       <div class="badge-preview__tile badge-preview__tile--ink"><img src="/assets/badges/lockup-cream.svg" width="159" height="44" alt=""></div>
-      <div class="badge-preview__tile badge-preview__tile--spectrum"><img src="/assets/badges/lockup-cream.svg" width="159" height="44" alt=""></div>
+      <div class="badge-preview__tile badge-preview__tile--spectrum"><img src="/assets/badges/lockup-flat-cream.svg" width="159" height="44" alt=""></div>
     </div>
   </div>
 </section>
@@ -95,7 +95,7 @@ $badges = require APP_ROOT . '/data/badges.php';
   <div class="wrap">
     <?= section_head($b['templates']['eyebrow'], $b['templates']['title'], $b['templates']['lede']) ?>
     <div class="resource-grid">
-      <?php foreach ($b['templates']['items'] as [$micro, $title, $text, $l1, $h1, $l2, $h2]): ?>
+      <?php foreach ($b['templates']['items'] as $item): [$micro, $title, $text, $l1, $h1, $l2, $h2] = $item; $l3 = $item[7] ?? ''; $h3 = $item[8] ?? ''; ?>
       <article class="resource-card">
         <p class="micro"><?= e($micro) ?></p>
         <h3><?= e($title) ?></h3>
@@ -103,6 +103,7 @@ $badges = require APP_ROOT . '/data/badges.php';
         <div class="resource-card__files">
           <a href="<?= e($h1) ?>" download><?= e($l1) ?><?= arrow_icon() ?></a>
           <?php if ($h2 !== ''): ?><a href="<?= e($h2) ?>" download><?= e($l2) ?><?= arrow_icon() ?></a><?php endif; ?>
+          <?php if ($h3 !== ''): ?><a href="<?= e($h3) ?>" download><?= e($l3) ?><?= arrow_icon() ?></a><?php endif; ?>
         </div>
       </article>
       <?php endforeach; ?>

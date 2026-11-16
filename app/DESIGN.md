@@ -23,32 +23,48 @@ colour       paper #f8f3ea · paper-2 #fffaf1 · ink #171008
              body #4b4034 · muted #6f6355 · ember #b23a00
 lines        --line #d8cdbd · --line-strong #978672 · always 2px
 radius       card 22px · button/code 12px · nested 10px
+             outlines never round an element that must stay square (inputs)
 shadow       resting: none · interactive hover: --shadow-sm
 motion       0.24s cubic-bezier(.22,1,.36,1) for controls
-             0.55s reveal; respect prefers-reduced-motion
+             0.55s reveal; mark orbit 14s linear (dot + gradient swirl)
+             respect prefers-reduced-motion for every CSS animation
+type         body 16 / sm 14 / xs 13 / label 12 / micro 11 / tag 10 (px minima)
+             caps tracking 0.12em; eyebrow 0.14em; no other tracking values
 spacing      section clamp(84px, 9.5vw, 152px) · card 24px
              grid gap 20px · compact control gap 8px
 ```
 
 ## Type scale
 
-English and Chinese use the same roles with different values.
+Latin: Ubuntu (400 preload, 500/700 on demand). Code: Ubuntu Mono. Chinese:
+system CJK stack (`--font-zh`); Latin inside Chinese copy uses Ubuntu.
+Font files are latin-subset woff2, `font-display: swap`; the CSS `@font-face`
+block and the preload in `app/header.php` are the only places fonts are wired.
+
+Roles, one per size class — nothing smaller than 10px anywhere, and 10px is
+reserved for uppercase tags only:
 
 | role | English | Chinese |
 |---|---|---|
-| display | clamp(54px, 17vw, 178px), 0.83 | clamp(44px, 13.2vw, 124px), 1.12 |
-| page title | clamp(38px, 10.4vw, 138px), 0.90 | clamp(34px, 7.2vw, 96px), 1.18 |
-| h2 | clamp(30px, 4.5vw, 66px), 1.04 | clamp(26px, 3.4vw, 50px), 1.28 |
-| lead | clamp(16px, 1.4vw, 20px), 1.62 | clamp(15.5px, 1.25vw, 19px), 1.90 |
+| display | clamp(48px, 10.5vw, 136px), 0.83 | clamp(40px, 8.6vw, 104px), 1.12 |
+| page title | clamp(34px, 7.5vw, 104px), 0.90 | clamp(30px, 6.4vw, 84px), 1.18 |
+| h2 | clamp(26px, 3.6vw, 56px), 1.04 | clamp(24px, 3.2vw, 46px), 1.28 |
+| lead | clamp(16px, 1.3vw, 19px), 1.62 | clamp(15.5px, 1.2vw, 18px), 1.90 |
 | body | 16px, 1.65 | 16px, 1.90 |
 | prose | 15px, 1.80 | 15px, 1.95 |
+| label | 12px uppercase, 0.1em | 12px, 0.02em |
+| micro | 11px uppercase, 0.1em | 11px, 0.06em |
+| tag | 10px uppercase | 10px, 0.06em |
+
+Display/page-title/h2 keep the 1:0.77:0.41 ratio to body in both languages so
+contrast between levels is real but never theatrical (no 178px display against
+6px mock labels).
 
 Additional Chinese rules:
 
 - no negative tracking on headings;
 - measure: lead 40ch, prose 42em, check body 38em;
-- buttons 13px / small 11px; nav 12px;
-- CJK font stack is `--font-zh`; Latin inside Chinese copy still uses Inter.
+- buttons 13px / small 11px; nav 12px.
 
 Chinese type is not a translated copy of the English scale. Dense glyphs need
 more line height, less tracking and a smaller display size.
@@ -94,10 +110,29 @@ rest and ember on focus. The scan field uses the same rule, only larger.
 
 - Spectrum ribbon: header/footer, hero, mark section, badge lockups, seals,
   statements, verified, OG, poster.
-- Mono: favicon and 64px icons. The geometry is the same; the mono palette
-  exists so the ribbon does not turn into mud at the smallest sizes.
+- Flat (single-colour silhouette, `mark-flat-cream` / `lockup-flat-cream`):
+  the mark on posters, gradient tiles and any complex colourful surface. Two
+  gradients stacked on the same background is noise.
+- Mono: favicon and 64px icons, no ember dot. The geometry is the same; the
+  mono palette exists so the ribbon does not turn into mud at the smallest
+  sizes.
 - Dark surfaces: cream spark, ink stroke, light ribbon, ember dot.
 - Light surfaces: ink spark, paper/white stroke, spectrum or drift ribbon.
+
+## Mark motion
+
+- The ember dot is omitted below 96px (header/footer 30–36px, favicon, icons,
+  lockups at 40px). Above 96px it is always present and always ember #DC5000.
+- At display sizes (≥ 200px, currently hero 460px and the mark section 420px)
+  the mark is alive: the dot orbits the artboard centre every 14s via CSS
+  (`@keyframes mark-orbit`, `transform-origin: 50% 50%` of the view-box), and
+  the two ribbon gradients rotate 14s via SMIL `animateTransform` on
+  `gradientTransform` (see `mark_svg()` in `app/ui.php`).
+- Motion is one system: dot and colour travel the same direction at the same
+  period, so it reads as orbit, not decoration.
+- `prefers-reduced-motion: reduce` stops the dot (CSS) and all site animation;
+  the gradient swirl continues but is a slow colour shift, not movement across
+  the page.
 
 ## Copy voice
 

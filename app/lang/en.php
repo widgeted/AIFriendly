@@ -191,6 +191,7 @@ return [
             'copied' => 'Scan summary copied.',
             'copy_failed' => 'Could not copy the summary.',
             'aria_result' => 'Scan result',
+            'levels' => ['Level 2 signals' => 'Level 2 signals', 'Level 1 signals' => 'Level 1 signals', 'Foundation missing' => 'Foundation missing'],
             'grades' => ['Strong signals' => 'Strong signals', 'Readable' => 'Readable', 'Getting there' => 'Getting there', 'Mostly opaque' => 'Mostly opaque'],
             'summaries' => [
                 'Strong signals' => 'The public surface is legible. Fix the remaining warnings, then work through Level 2 and 3 by hand — they cannot be fully tested from outside.',
@@ -446,7 +447,7 @@ return [
             'items' => [
                 ['A3 / print', 'Poster', '“Open to AI. Accountable to humans.” A3, vector, with the mark and the short manifesto.', 'Poster SVG', '/assets/brand/poster-a3.svg', 'PDF', '/assets/brand/poster-a3.pdf'],
                 ['1200 × 630', 'Social card', 'For link previews, announcement posts and slides. English and Chinese versions.', 'EN SVG', '/assets/brand/social-en.svg', '中文 SVG', '/assets/brand/social-zh.svg'],
-                ['Standalone', 'The mark', 'The spark and ribbon orbit without the wordmark. Spectrum SVG for light and dark surfaces.', 'SVG light', '/assets/brand/mark.svg', 'SVG dark', '/assets/brand/mark-cream.svg'],
+                ['Standalone', 'The mark', 'The spark and ribbon orbit without the wordmark. Spectrum SVG for light and dark surfaces, plus a flat single-colour version for posters and colourful surfaces.', 'SVG light', '/assets/brand/mark.svg', 'SVG dark', '/assets/brand/mark-cream.svg', 'SVG flat', '/assets/brand/mark-flat-cream.svg'],
             ],
         ],
         'note' => '<strong>No permission needed.</strong> The self-declared badges are free for personal and commercial use under the <a href="{license}">AI Friendly Mark License</a>. No attribution required. Do not alter the files, and do not use the verified badge unless you have a current listing.',

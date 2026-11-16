@@ -10,6 +10,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'GET') {
 
 set_time_limit(30);
 if (!rate_limit('scan', SCAN_LIMIT)) {
+    header('Retry-After: 600');
     fail(429, 'Too many scans from this connection. Try again in a little while.');
 }
 
@@ -445,27 +446,15 @@ foreach ($cats as $k => $v) {
 }
 $score = (int) round($total);
 
-if ($score >= 85) {
-    $grade = 'Strong signals';
-    $summary = 'The public surface is legible. Fix the remaining warnings, then work through Level 2 and 3 by hand — they cannot be fully tested from outside.';
-} elseif ($score >= 70) {
-    $grade = 'Readable';
-    $summary = 'The basics are in place. Close the gaps below before claiming Level 1, then decide whether an API or tool manifest makes sense.';
-} elseif ($score >= 45) {
-    $grade = 'Getting there';
-    $summary = 'An agent can see part of the page, but important signals are missing. Start with server-rendered content, metadata and robots.txt.';
-} else {
-    $grade = 'Mostly opaque';
-    $summary = 'Most automated readers will struggle. Fix the foundations first: HTML content, a title, a description, robots.txt and a sitemap.';
+// Grades, summaries and level names live in the lang files (single source of truth).
+$gradeKey = 'Mostly opaque';
+foreach ([85 => 'Strong signals', 70 => 'Readable', 45 => 'Getting there'] as $min => $key) {
+    if ($score >= $min) { $gradeKey = $key; break; }
 }
-
-if ($uiLang === 'zh') {
-    $zhUi = require __DIR__ . '/../app/lang/zh.php';
-    $gradeKey = $grade;
-    $grade = $zhUi['common']['scan']['grades'][$gradeKey] ?? $grade;
-    $summary = $zhUi['common']['scan']['summaries'][$gradeKey] ?? $summary;
-    $levelMap = ['Level 2 signals' => '第 2 级信号', 'Level 1 signals' => '第 1 级信号', 'Foundation missing' => '基础缺失'];
-}
+$scanUi = require __DIR__ . '/../app/lang/' . ($uiLang === 'zh' ? 'zh' : 'en') . '.php';
+$grade = $scanUi['common']['scan']['grades'][$gradeKey] ?? $gradeKey;
+$summary = $scanUi['common']['scan']['summaries'][$gradeKey] ?? '';
+$levelMap = $scanUi['common']['scan']['levels'] ?? [];
 
 $essential = ['title', 'meta_description', 'h1', 'ssr_content', 'robots_txt', 'sitemap'];
 $byId = [];

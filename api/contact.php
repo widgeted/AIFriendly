@@ -30,7 +30,7 @@ $wantsJson = str_contains((string) ($_SERVER['HTTP_ACCEPT'] ?? ''), 'application
 $back = $lang === 'zh' ? '/zh/' : '/';
 $backLabel = $lang === 'zh' ? '返回 AI Friendly' : 'Back to AI Friendly';
 
-function form_page(int $status, bool $ok, string $message, string $lang, string $back, string $backLabel): void
+function form_page(int $status, bool $ok, string $message, string $lang, string $back, string $backLabel, string $cssV): void
 {
     http_response_code($status);
     header('Content-Type: text/html; charset=utf-8');
@@ -44,27 +44,28 @@ function form_page(int $status, bool $ok, string $message, string $lang, string 
 
 function form_fail(int $status, string $message): void
 {
-    global $wantsJson, $lang, $back, $backLabel;
+    global $wantsJson, $lang, $back, $backLabel, $cssV;
     if ($wantsJson) {
         json_out($status, ['ok' => false, 'error' => $message]);
     }
-    form_page($status, false, $message, $lang, $back, $backLabel);
+    form_page($status, false, $message, $lang, $back, $backLabel, $cssV);
 }
 
 function form_ok(string $message): void
 {
-    global $wantsJson, $lang, $back, $backLabel;
+    global $wantsJson, $lang, $back, $backLabel, $cssV;
     if ($wantsJson) {
         json_out(200, ['ok' => true, 'message' => $message]);
     }
-    form_page(200, true, $message, $lang, $back, $backLabel);
+    form_page(200, true, $message, $lang, $back, $backLabel, $cssV);
 }
 
 if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'POST') {
     header('Allow: POST');
     form_fail(405, $m['method']);
 }
-if (!rate_limit('form', FORM_LIMIT)) {
+if (!rate_limit('form', FORM_LIMIT, 3600, true)) {
+    header('Retry-After: 600');
     form_fail(429, $m['rate']);
 }
 
