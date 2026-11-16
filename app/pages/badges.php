@@ -95,7 +95,7 @@ $badges = require APP_ROOT . '/data/badges.php';
   <div class="wrap">
     <?= section_head($b['templates']['eyebrow'], $b['templates']['title'], $b['templates']['lede']) ?>
     <div class="resource-grid">
-      <?php foreach ($b['templates']['items'] as $item): [$micro, $title, $text, $l1, $h1, $l2, $h2] = $item; $l3 = $item[7] ?? ''; $h3 = $item[8] ?? ''; ?>
+      <?php foreach ($b['templates']['items'] as $item): [$micro, $title, $text, $l1, $h1, $l2, $h2] = $item; $l3 = $item[7] ?? ''; $h3 = $item[8] ?? ''; $l4 = $item[9] ?? ''; $h4 = $item[10] ?? ''; ?>
       <article class="resource-card">
         <p class="micro"><?= e($micro) ?></p>
         <h3><?= e($title) ?></h3>
@@ -104,6 +104,7 @@ $badges = require APP_ROOT . '/data/badges.php';
           <a href="<?= e($h1) ?>" download><?= e($l1) ?><?= arrow_icon() ?></a>
           <?php if ($h2 !== ''): ?><a href="<?= e($h2) ?>" download><?= e($l2) ?><?= arrow_icon() ?></a><?php endif; ?>
           <?php if ($h3 !== ''): ?><a href="<?= e($h3) ?>" download><?= e($l3) ?><?= arrow_icon() ?></a><?php endif; ?>
+          <?php if ($h4 !== ''): ?><a href="<?= e($h4) ?>" download><?= e($l4) ?><?= arrow_icon() ?></a><?php endif; ?>
         </div>
       </article>
       <?php endforeach; ?>
