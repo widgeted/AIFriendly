@@ -128,21 +128,11 @@ decorative: it answers "how much is left" on long pages.
 ## Palettes
 
 - Spectrum ribbon: header/footer, hero, mark section, badge lockups, seals,
-  statements, verified, OG, poster. Spectrum accent gradients (verified frame,
-  underline rules) run on the diagonal — 135°, top-left amber to bottom-right
-  indigo — never a flat left-to-right ramp.
+  statements, verified, OG, poster.
 - Flat two-tone (`mark-flat-cream` / `lockup-flat-cream`): cream fills
   (#fff6e7 spark + ribbon, #fffaf1 inner ribbon) with an ink #171008 outline,
   no dot. For posters, gradient tiles and any complex colourful surface: one
   silhouette would melt into the background, so boundaries are drawn.
-- Poster two-colour (`mark-poster`): cream #fff6e7 spark, ink #171008 ring,
-  ink outline, no dot. For printed posters and any busy photographic or
-  gradient surface where the spark and the ring must read as two shapes.
-- Knockout rule (every palette, every size): wherever the ribbon ring meets
-  the spark, the spark is cut back by a 5-unit transparent gap (mask on the
-  spark; the ring's own 2-unit outline plus the gap). The gap is empty — the
-  surface shows through. Never fill it with a spacer colour, and never let the
-  ring and the spark share an edge.
 - Mono: favicon and 64px icons, no ember dot. The geometry is the same; the
   mono palette exists so the ribbon does not turn into mud at the smallest
   sizes.
