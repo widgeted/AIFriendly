@@ -45,6 +45,24 @@ window.__AF_READY = true;
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
+  /* ---------- reading progress (header spectrum rule) ---------- */
+  const progress = $('.progress i');
+  if (progress) {
+    let queued = false;
+    const paint = () => {
+      queued = false;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      progress.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+    };
+    const queue = () => {
+      if (!queued) { queued = true; requestAnimationFrame(paint); }
+    };
+    paint();
+    window.addEventListener('scroll', queue, { passive: true });
+    window.addEventListener('resize', queue, { passive: true });
+  }
+
   /* ---------- mobile menu ---------- */
   const menuBtn = $('[data-menu]');
   const nav = $('[data-nav]');

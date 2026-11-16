@@ -94,6 +94,25 @@ shell, not a one-off shadow.
 All text inputs, textareas and selects use a 2px underline, `--line-strong` at
 rest and ember on focus. The scan field uses the same rule, only larger.
 
+## Links
+
+- Never underlined. Not in prose, not in footers, not as hover, not as active
+  state. An underline is decoration; clickability is communicated by the
+  element's role and affordance.
+- In-text links: ember #B23A00 at weight 500 (body text is ink at 400, so the
+  link is distinguishable by colour AND weight — axe's link-in-text-block
+  check passes). Hover inverts to ink.
+- Structural links (buttons, cards, TOC, footer columns, file links) carry an
+  arrow icon, weight or placement instead of any underline.
+- The header brand does not recolour on hover; its ribbon spectrum flows
+  instead (see Mark motion).
+
+## Reading progress
+
+A 2px spectrum rule fixed to the header's bottom edge fills left-to-right
+with scroll (rAF-throttled transform, no animation loop). Scroll-linked, not
+decorative: it answers "how much is left" on long pages.
+
 ## Rules and dividers
 
 - Full-width rules: site header, footer bands, section boundaries, hero strip.
@@ -110,9 +129,10 @@ rest and ember on focus. The scan field uses the same rule, only larger.
 
 - Spectrum ribbon: header/footer, hero, mark section, badge lockups, seals,
   statements, verified, OG, poster.
-- Flat (single-colour silhouette, `mark-flat-cream` / `lockup-flat-cream`):
-  the mark on posters, gradient tiles and any complex colourful surface. Two
-  gradients stacked on the same background is noise.
+- Flat two-tone (`mark-flat-cream` / `lockup-flat-cream`): cream fills
+  (#fff6e7 spark + ribbon, #fffaf1 inner ribbon) with an ink #171008 outline,
+  no dot. For posters, gradient tiles and any complex colourful surface: one
+  silhouette would melt into the background, so boundaries are drawn.
 - Mono: favicon and 64px icons, no ember dot. The geometry is the same; the
   mono palette exists so the ribbon does not turn into mud at the smallest
   sizes.
@@ -121,17 +141,26 @@ rest and ember on focus. The scan field uses the same rule, only larger.
 
 ## Mark motion
 
-- The ember dot is omitted below 96px (header/footer 30–36px, favicon, icons,
-  lockups at 40px). Above 96px it is always present and always ember #DC5000.
+- The ember dot is omitted below 96px: header/footer 30–36px, favicon, icons,
+  lockups (40), statement badges (34) and seals (72) all ship without it. It
+  is always present and always ember #DC5000 at 96px and above.
 - At display sizes (≥ 200px, currently hero 460px and the mark section 420px)
-  the mark is alive: the dot orbits the artboard centre every 14s via CSS
-  (`@keyframes mark-orbit`, `transform-origin: 50% 50%` of the view-box), and
-  the two ribbon gradients rotate 14s via SMIL `animateTransform` on
-  `gradientTransform` (see `mark_svg()` in `app/ui.php`).
+  the mark is alive. The dot rides the ribbon: its track is a closed path that
+  follows the ribbon's spine (see `mark_svg()` in `app/ui.php` — SMIL
+  `animateMotion` + `mpath`, `calcMode="paced"`, 14s, the same clock as the
+  gradient swirl). Where the ribbon passes behind the spark the track dives
+  behind it too, and the dot fades out over ~0.55s before the silhouette edge
+  and fades back in where it re-emerges — it is hidden behind the spark, never
+  circling on its surface. The two ribbon gradients rotate 14s via SMIL
+  `animateTransform` on `gradientTransform`.
 - Motion is one system: dot and colour travel the same direction at the same
   period, so it reads as orbit, not decoration.
-- `prefers-reduced-motion: reduce` stops the dot (CSS) and all site animation;
-  the gradient swirl continues but is a slow colour shift, not movement across
+- Hovering the header brand makes the ribbon's spectrum flow (CSS
+  `hue-rotate`, 6s loop, on the gradient-filled paths only). The spark keeps
+  its colour — links never recolour the mark's core.
+- `prefers-reduced-motion: reduce` swaps the animated dot for a static twin
+  parked on the ribbon (`.mark__dot-static`) and stops the hue flow; the
+  gradient swirl continues but is a slow colour shift, not movement across
   the page.
 
 ## Copy voice

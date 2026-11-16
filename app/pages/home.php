@@ -32,7 +32,6 @@ foreach ($homeFaqs as $item) {
       <div class="hero__visual">
         <div class="hero-mark">
           <?= mark_svg(460, 'hero-mark__svg', 'spectrum') ?>
-          <span class="hero-mark__spec"><?= e($h['mark']['spec']) ?></span>
         </div>
       </div>
     </div>
@@ -98,7 +97,6 @@ foreach ($homeFaqs as $item) {
       <h2 class="h2"><?= $h['mark']['title'] ?></h2>
       <p class="lede"><?= e($h['mark']['p1']) ?></p>
       <p><?= e($h['mark']['p2']) ?></p>
-      <p class="mark-spec"><?= e($h['mark']['spec']) ?></p>
       <ul class="mark-points">
         <?php foreach ($h['mark']['points'] as $point): ?>
         <li><?= check_icon() ?><span><?= e($point) ?></span></li>

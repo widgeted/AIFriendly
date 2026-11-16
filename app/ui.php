@@ -17,6 +17,11 @@ function mark_svg(int $size = 30, string $class = '', string $variant = 'mono'):
     $fillB = '#6c5f51';
     $defs = '';
     $swirl = '';
+    // Orbit track: a closed path following the ribbon's spine (offsets are
+    // relative to the dot's home position 160.2,253.4, so a browser without
+    // SMIL still draws the dot exactly there). The last ~30% of the loop runs
+    // behind the spark, where the dot fades out and back in (keyTimes below).
+    $orbit = 'M0.00,0.00C25.80,-7.40 40.80,-14.40 47.80,-21.40C65.80,-35.40 82.80,-45.40 94.80,-52.40C111.80,-63.40 125.80,-76.40 133.80,-87.40C138.80,-99.40 140.80,-112.40 142.80,-123.40C144.80,-134.40 149.80,-141.40 154.80,-146.40C159.80,-151.40 150.80,-153.40 141.80,-151.40C131.80,-149.40 113.80,-156.40 97.80,-160.40C82.80,-164.40 71.80,-157.40 63.80,-153.40C56.80,-150.40 49.80,-149.40 45.80,-149.40C36.80,-148.40 32.80,-145.40 27.80,-141.40C15.80,-132.40 2.80,-124.40 -8.20,-117.40C-25.20,-106.40 -39.20,-97.40 -52.20,-91.40C-61.20,-86.40 -69.20,-80.40 -75.20,-75.40C-81.20,-70.40 -87.20,-64.40 -92.20,-60.40C-99.20,-54.40 -103.20,-47.40 -104.20,-40.40C-106.20,-29.40 -110.20,-17.40 -114.20,-7.40C-116.20,-1.40 -108.20,4.60 -98.20,8.60C-80.20,14.60 -50.20,10.60 -27.20,3.60C-17.20,0.60 -8.20,-0.40 0.00,0.00Z';
     if ($variant === 'spectrum') {
         $g1 = 'af-g1-' . $uid;
         $g2 = 'af-g2-' . $uid;
@@ -34,10 +39,25 @@ function mark_svg(int $size = 30, string $class = '', string $variant = 'mono'):
         $fillA = 'url(#' . $g1 . ')';
         $fillB = 'url(#' . $g2 . ')';
     }
-    $dot = $showDot
-        ? '<g' . ($animate ? ' class="mark__orbit"' : '') . '><circle cx="160.2" cy="253.4" r="15.7" fill="#dc5000" stroke="' . $stroke . '" stroke-width="2"/></g>'
-        : '';
-    $out = '<svg class="mark' . $c . '" width="' . $size . '" height="' . $size . '" viewBox="0 0 360 360" aria-hidden="true" focusable="false">'
+    // The dot rides the ribbon. At motion sizes it follows the orbit track
+    // (SMIL, same 14s clock as the gradient swirl) and hides behind the spark;
+    // a static twin covers reduced-motion / no-SMIL so the dot never jumps.
+    if (!$showDot) {
+        $dot = '';
+    } elseif ($animate) {
+        $orbId = 'af-orb-' . $uid;
+        $defs .= '<path id="' . $orbId . '" d="' . $orbit . '" fill="none" stroke="none"/>';
+        $dotMarkup = '<circle cx="160.2" cy="253.4" r="15.7" fill="#dc5000" stroke="' . $stroke . '" stroke-width="2"/>';
+        $dot = '<g class="mark__orbit">' . $dotMarkup
+            . '<animateMotion dur="14s" repeatCount="indefinite" calcMode="paced"><mpath xlink:href="#' . $orbId . '" href="#' . $orbId . '"/></animateMotion>'
+            . '<animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;0.4565;0.497;0.701;0.736;1" dur="14s" repeatCount="indefinite"/>'
+            . '</g>'
+            . '<circle class="mark__dot-static" cx="160.2" cy="253.4" r="15.7" fill="#dc5000" stroke="' . $stroke . '" stroke-width="2"/>';
+    } else {
+        $dot = '<circle cx="160.2" cy="253.4" r="15.7" fill="#dc5000" stroke="' . $stroke . '" stroke-width="2"/>';
+    }
+    $out = '<svg class="mark' . $c . '" width="' . $size . '" height="' . $size . '" viewBox="0 0 360 360" aria-hidden="true" focusable="false"'
+        . ($animate ? ' xmlns:xlink="http://www.w3.org/1999/xlink"' : '') . '>'
         . $defs
         . '<path d="' . $diamond . '" fill="currentColor" stroke="' . $stroke . '" stroke-width="2"/>'
         . '<path d="' . $ribbonA . '" fill="' . $fillA . '" stroke="' . $stroke . '" stroke-width="2"/>'

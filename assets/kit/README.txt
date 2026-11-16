@@ -41,9 +41,9 @@ paper and the dark files on ink; the white stroke is part of the mark.
 icon-*: monochrome, for small sizes where the spectrum ribbon would be muddy
 (and where the dot is omitted).
 mark.svg / mark-cream.svg: the spectrum mark alone, for light and dark.
-mark-flat-cream.svg / lockup-flat-cream.svg: a single-colour silhouette for
-posters, gradient tiles and other colourful surfaces, where a second gradient
-would melt into the background.
+mark-flat-cream.svg / lockup-flat-cream.svg: a two-tone silhouette (cream
+fills, ink outline) for posters, gradient tiles and other colourful surfaces,
+where a second gradient would melt into the background.
 
 If a surface needs a different palette, change fills only. Keep the geometry,
 the 2-unit stroke and the dot. Do not invent a new shape.

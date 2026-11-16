@@ -83,6 +83,7 @@ $jsonld = [
 <body class="<?= e($bodyClass) ?>">
 <a class="skip" href="#main"><?= e(t('common.skip')) ?></a>
 <header class="site-header" data-header>
+  <div class="progress" aria-hidden="true"><i></i></div>
   <div class="wrap header__inner">
     <a class="brand" href="<?= e(url('/')) ?>" aria-label="<?= e(t('common.brand_home')) ?>">
       <span class="brand__mark"><?= mark_svg(30, '', 'spectrum') ?></span>

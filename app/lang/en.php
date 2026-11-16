@@ -244,7 +244,6 @@ return [
             'p1' => 'The spark is the idea AI helps you reach. The ribbon is the orbit around it: one continuous path, with a single ember dot where a human takes hold. It circles the work without sealing it.',
             'p2' => "Use it wherever your work lives — the footer of a site, the About screen of an app, the corner of a poster, the top of a README. The spectrum lockup is the primary; switch to the mono icon when the mark is thumbnail-sized. Free for commercial and personal work. No attribution required. Don't alter the geometry, and don't use it to claim a certification you don't have.",
             'points' => ['Free forever', 'No account', 'No tracking'],
-            'spec' => '360-unit artboard · ribbon orbit · 15.7-unit dot',
             'cta1' => 'Download the badges',
             'cta2' => 'Read the license',
         ],
@@ -447,7 +446,7 @@ return [
             'items' => [
                 ['A3 / print', 'Poster', '“Open to AI. Accountable to humans.” A3, vector, with the mark and the short manifesto.', 'Poster SVG', '/assets/brand/poster-a3.svg', 'PDF', '/assets/brand/poster-a3.pdf'],
                 ['1200 × 630', 'Social card', 'For link previews, announcement posts and slides. English and Chinese versions.', 'EN SVG', '/assets/brand/social-en.svg', '中文 SVG', '/assets/brand/social-zh.svg'],
-                ['Standalone', 'The mark', 'The spark and ribbon orbit without the wordmark. Spectrum SVG for light and dark surfaces, plus a flat single-colour version for posters and colourful surfaces.', 'SVG light', '/assets/brand/mark.svg', 'SVG dark', '/assets/brand/mark-cream.svg', 'SVG flat', '/assets/brand/mark-flat-cream.svg'],
+                ['Standalone', 'The mark', 'The spark and ribbon orbit without the wordmark. Spectrum SVG for light and dark surfaces, plus a flat two-tone version (cream fills, ink outline) for posters and colourful surfaces.', 'SVG light', '/assets/brand/mark.svg', 'SVG dark', '/assets/brand/mark-cream.svg', 'SVG flat', '/assets/brand/mark-flat-cream.svg'],
             ],
         ],
         'note' => '<strong>No permission needed.</strong> The self-declared badges are free for personal and commercial use under the <a href="{license}">AI Friendly Mark License</a>. No attribution required. Do not alter the files, and do not use the verified badge unless you have a current listing.',
