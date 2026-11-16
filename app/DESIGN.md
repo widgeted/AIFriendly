@@ -145,13 +145,20 @@ decorative: it answers "how much is left" on long pages.
   lockups (40), statement badges (34) and seals (72) all ship without it. It
   is always present and always ember #DC5000 at 96px and above.
 - At display sizes (≥ 200px, currently hero 460px and the mark section 420px)
-  the mark is alive. The dot rides the ribbon: its track is a closed path that
-  follows the ribbon's spine (see `mark_svg()` in `app/ui.php` — SMIL
+  the mark is alive. The dot rides the ribbon: its track is the ribbon's true
+  centreline, computed from the artwork's own geometry (cross-section pairing
+  of the band's two edges; every track point is verified to lie on the band)
+  and emitted as a closed path in `mark_svg()` (`app/ui.php`) — SMIL
   `animateMotion` + `mpath`, `calcMode="paced"`, 14s, the same clock as the
-  gradient swirl). Where the ribbon passes behind the spark the track dives
-  behind it too, and the dot fades out over ~0.55s before the silhouette edge
-  and fades back in where it re-emerges — it is hidden behind the spark, never
-  circling on its surface. The two ribbon gradients rotate 14s via SMIL
+  gradient swirl. Occlusion is real, not a fade: the dot layer carries an SVG
+  mask (`maskUnits="userSpaceOnUse"`) = white canvas + black spark silhouette,
+  minus a white-stroked re-open corridor along the arc where the band crosses
+  in front of the spark (the star's deep SE dip splits that crossing into two
+  patches; the corridor covers both). Passing the band's pointed tip the dot
+  is clipped by the silhouette edge into a shrinking crescent, stays fully
+  hidden along the behind-stretch (which runs ≥ 17 units inside the edge, so
+  the 15.7-radius dot never peeks), and re-emerges as a growing crescent at
+  the left tip. The two ribbon gradients rotate 14s via SMIL
   `animateTransform` on `gradientTransform`.
 - Motion is one system: dot and colour travel the same direction at the same
   period, so it reads as orbit, not decoration.

@@ -27,14 +27,14 @@ $levelOptions = $T['standard']['audit']['levels'];
       <div class="note mt-m"><p><?= links($v['compare']['note']) ?></p></div>
     </div>
     <div class="reveal d1">
-      <div class="table-scroll" tabindex="0" role="region" aria-label="<?= e($v['compare']['title']) ?>">
+      <section class="table-scroll" tabindex="0" aria-label="<?= e($v['compare']['title']) ?>">
         <table class="compare">
           <thead><tr><?php foreach ($v['compare']['head'] as $h): ?><th><?= e($h) ?></th><?php endforeach; ?></tr></thead>
           <tbody>
             <?php foreach ($v['compare']['rows'] as [$label, $a, $b]): ?><tr><td><?= e($label) ?></td><td><?= e($a) ?></td><td><?= e($b) ?></td></tr><?php endforeach; ?>
           </tbody>
         </table>
-      </div>
+      </section>
     </div>
   </div>
 </section>

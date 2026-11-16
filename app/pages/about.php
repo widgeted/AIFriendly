@@ -55,14 +55,14 @@ foreach ($faqs['about'] as $item) {
       <p class="lede"><?= e($a['what']['lede']) ?></p>
     </div>
     <div class="reveal d1">
-      <div class="table-scroll" tabindex="0" role="region" aria-label="<?= e($a['what']['title']) ?>">
+      <section class="table-scroll" tabindex="0" aria-label="<?= e($a['what']['title']) ?>">
         <table class="compare">
           <thead><tr><th><?= e($a['what']['head'][0]) ?></th><th><?= e($a['what']['head'][1]) ?></th></tr></thead>
           <tbody>
             <?php foreach ($a['what']['rows'] as [$yes, $no]): ?><tr><td><?= e($yes) ?></td><td><?= e($no) ?></td></tr><?php endforeach; ?>
           </tbody>
         </table>
-      </div>
+      </section>
       <div class="note mt-m"><p><?= e($a['what']['note']) ?></p></div>
       <p class="lede mt-m"><?= e($a['what']['adjacent']) ?></p>
     </div>
