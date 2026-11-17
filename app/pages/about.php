@@ -138,7 +138,7 @@ foreach ($faqs['about'] as $item) {
   </div>
 </section>
 
-<section class="section section--cta">
+<section class="section">
   <div class="wrap">
     <div class="cta-band">
       <p class="eyebrow justify-center"><span class="spectrum-dot" aria-hidden="true"></span><?= e($a['cta']['eyebrow']) ?></p>

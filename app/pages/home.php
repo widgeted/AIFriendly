@@ -237,7 +237,7 @@ foreach ($homeFaqs as $item) {
   </div>
 </section>
 
-<section class="section section--cta">
+<section class="section">
   <div class="wrap">
     <div class="cta-band reveal">
       <p class="eyebrow justify-center"><span class="spectrum-dot" aria-hidden="true"></span><?= e($h['cta']['eyebrow']) ?></p>

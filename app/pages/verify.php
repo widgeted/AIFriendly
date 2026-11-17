@@ -66,7 +66,7 @@ $levelOptions = $T['standard']['audit']['levels'];
   </div>
 </section>
 
-<section class="section section--tight">
+<section class="section">
   <div class="wrap"><div class="note"><p><?= links($v['pricing']) ?></p></div></div>
 </section>
 
@@ -102,7 +102,7 @@ $levelOptions = $T['standard']['audit']['levels'];
   </div>
 </section>
 
-<section class="section section--cta">
+<section class="section">
   <div class="wrap">
     <div class="cta-band">
       <p class="eyebrow justify-center"><span class="spectrum-dot" aria-hidden="true"></span><?= e($v['cta']['eyebrow']) ?></p>

@@ -37,7 +37,7 @@ $scanI18n = [
   </div>
 </section>
 
-<section class="section section--flush section--scan">
+<section class="section section--flush">
   <div class="wrap">
     <form class="scan-form scan-form--page" action="<?= e(url('/scan/')) ?>" method="get" data-scan-form novalidate>
       <label class="sr-only" for="scan-url"><?= e(t('common.scan.placeholder')) ?></label>
@@ -109,11 +109,11 @@ $scanI18n = [
   </div>
 </section>
 
-<section class="section section--tight">
+<section class="section">
   <div class="wrap"><div class="note"><p><?= links($s['note']) ?></p></div></div>
 </section>
 
-<section class="section section--cta">
+<section class="section">
   <div class="wrap">
     <div class="cta-band">
       <p class="eyebrow justify-center"><span class="spectrum-dot" aria-hidden="true"></span><?= e($s['cta']['eyebrow']) ?></p>

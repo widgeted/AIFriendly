@@ -1,6 +1,6 @@
 # AI Friendly — design system
 
-Version 3.1 · single source of truth for layout, spacing, type, colour,
+Version 4.0 · single source of truth for layout, spacing, type, colour,
 radii, borders, gradients and motion. The brand/mark rules live in
 [`DESIGN.md`](DESIGN.md); this file governs every page shell and component.
 
@@ -15,8 +15,8 @@ one-off pixel value.
 
 1. **One rhythm.** Vertical space comes from a 4px scale. Siblings share the
    same stack step; sections share one section step.
-2. **Dense but calm.** 2px rules and generous section padding carry the
-   structure. Components themselves stay compact.
+2. **Dense but calm.** Whitespace and local 2px rules carry the structure;
+   full-width rules mark page boundaries only. Components stay compact.
 3. **Two materials.** Paper (`--paper*`) and ink (`--ink*`), with a single
    accent (`--ember`) and one spectrum gradient. No third surface colour.
 4. **Type does the hierarchy.** Size, weight and casing — not colour — separate
@@ -185,8 +185,10 @@ Rules:
 | link row padding | `--space-2` (8) |
 | card padding | `--space-5` (24) |
 | grid gap (cards) | `--space-5` (24) |
-| section head → grid | `clamp(var(--space-6), 5vw, var(--space-9))` |
-| section padding | `clamp(var(--space-10), 9.5vw, var(--space-13))` |
+| section head → grid | `--stack` (32–48) |
+| block → block inside a section | `--stack-lg` (48–80) |
+| section padding | `--section-y` (48–96) |
+| first section after a hero | `--section-y-first` (40–64) top only |
 
 **Never**: 5/6/7/9/10/11/13/14/15/17/18/19/20/21/22/26/28/30/34/36px as a
 margin, padding or gap. Snap to the table. The only raw pixel offsets allowed
@@ -203,22 +205,43 @@ surfaces.
 | Token | Value | Use |
 |---|---|---|
 | `--gutter` | `clamp(24px, 4vw, 64px)` | page side padding |
-| `--viewport-pad` | centred beyond 1440 + gutter | full-bleed rules |
-| `--section-y` | `clamp(80px, 9.5vw, 152px)` | section block padding |
-| `--section-y-tight` | `clamp(40px, 5vw, 64px)` | tight sections (`--space-9` cap) |
+| `--section-y` | `clamp(48px, 6vw, 96px)` | every section's block padding |
+| `--section-y-first` | `clamp(40px, 5vw, 64px)` | first section after a hero (top only) |
+| `--stack` | `clamp(32px, 4vw, 48px)` | section head → content |
+| `--stack-lg` | `clamp(48px, 6vw, 80px)` | block → block inside a section |
 | `--header-h` | `76px` | fixed header |
 | `--scroll-pad` | `104px` | anchor / sticky offset |
 | `--hero-top` | `clamp(104px, 12vh, 140px)` | home hero top |
 | `--page-hero-top` | `clamp(120px, 15vh, 152px)` | interior page hero top |
 
 - Container: max `1440px`, gutter both sides.
-- Section: top border 2px, padding-block `--section-y`.
-- Flush section: no top border, top padding `clamp(40px, 5vw, 64px)`.
-- Scan section: top padding `clamp(24px, 4vw, 48px)`.
+- **One section rhythm.** Every `.section` uses `padding-block: --section-y`
+  at every breakpoint. No `--tight`, `--scan`, per-page or media-query section
+  padding. The only exception is the first section after a hero, which uses
+  `--section-y-first` on top.
+- Section heads use one gap: `margin-bottom: --stack`. Never a per-section
+  clamp.
 - Two-column: `1fr 1fr`, gap `clamp(32px, 5vw, 80px)`.
-- Section head: `1.05fr .95fr`, gap `clamp(32px, 4vw, 64px)`, bottom
-  `clamp(32px, 5vw, 64px)`, aligned to the baseline of the last line.
+- Section head: `1.05fr .95fr`, gap `clamp(32px, 4vw, 64px)`, aligned to the
+  baseline of the last line.
 - Card grids: 2 or 3 equal columns, gap `--space-5` (24).
+- Interior page hero: two columns `1.08fr / 0.92fr`. Eyebrow, title and actions
+  on the left; lede and meta on the right; optional preview spans both columns.
+  At ≤980 it collapses to one column in DOM order.
+
+**Full-width rule policy.** A rule that touches both viewport edges is a page
+boundary, not a section decoration. The complete list is:
+
+| Allowed full-width rule | Where |
+|---|---|
+| header bottom rule | scrolled header only |
+| reading progress | header's bottom edge |
+| hero strip top rule | the home hero's signal band |
+| footer top rule | above the footer |
+
+Nothing else may use `width: 100vw` or a negative viewport offset. Section
+boundaries are whitespace and optional `--tint` background. Lists, tables,
+checks and result rows draw rules only inside their own container.
 - Breakpoints: 1180 (nav density), 980 (stack two-column), 860 (mobile nav,
   single column), 640 (phone), 380 (hide language switch).
 - Minimum supported width: 320px. No horizontal overflow at any width.
@@ -302,7 +325,11 @@ One spectrum ramp, two allowed orientations.
 ### Cards and panels
 - Background `--paper-2`, border 2px `--line`, radius `--radius-lg`,
   padding `--space-5`.
-- Hover: border `--line-strong`, translateY(-3px), `--shadow-sm`.
+- Hover: border `--line-strong`, translateY(-3px), `--shadow-sm`. Hover is
+  always local to the card; never paint a full-bleed background behind a row.
+- Level cards (home `04`): three equal cards, gap `--space-5`; the count row is
+  pinned to the bottom with `margin-top:auto` and a local 2px rule; the title
+  recolours to ember on hover. Two columns at 980, one at 640.
 - Card title `--fs-h3` or `--fs-h4`; copy `--fs-body-s`; actions pinned to the
   bottom with `margin-top:auto`.
 - Panel (scan, score): padding `clamp(var(--space-5), 4vw, var(--space-9))`.
@@ -326,7 +353,9 @@ One spectrum ramp, two allowed orientations.
   `--paper-compare`.
 - Rows (checks, results, audit): grid, padding 12 0, top rule 2px, number 11/600
   ember, title 13–14/600.
-- Disclosure rows: summary 20px/500, plus icon 16px ember, answer 14/1.8.
+- Disclosure rows (FAQ): each item is its own card — 2px `--line`,
+  `--radius-md`, `--paper` fill, gap `--space-2`; summary padding 16 24,
+  plus icon 16px ember, answer 14/1.8. No rules spanning the FAQ column.
 
 ### Code
 - Block: 2px border, `--radius-sm`, bar padding 8 12, code 11/`--lh-body`
@@ -371,10 +400,12 @@ One spectrum ramp, two allowed orientations.
 Before shipping a change:
 
 1. `grep` the CSS for raw `#` outside `:root` — must be zero (print and the
-   generated SVG gradients excepted).
+   generated SVG gradients excepted). `grep '100vw'` must also be zero; only
+   the header, hero strip, progress bar and footer may own a viewport edge.
 2. `grep` for `border-radius: [0-9]` — only `50%` and `0` allowed.
 3. `grep` for `margin|padding|gap: .*[0-9]px` — every value must be a token, a
    documented clamp, or one of the optical offsets (`-1px`, `-3px`, `2px`).
+   `grep '.section.*border-top'` must return nothing.
 4. `grep` for `font-size: [0-9]` — allowed only in the mini mockups (`8px`)
    and inline code (`0.9em`); the scan input is the sole oversized clamp.
 5. Run the regression suite: axe (22 pages, 0 violations), html-validate,
