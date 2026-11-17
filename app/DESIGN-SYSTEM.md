@@ -1,6 +1,6 @@
 # AI Friendly — design system
 
-Version 4.1 · single source of truth for layout, spacing, type, colour,
+Version 4.2 · single source of truth for layout, spacing, type, colour,
 radii, borders, gradients and motion. The brand/mark rules live in
 [`DESIGN.md`](DESIGN.md); this file governs every page shell and component.
 
@@ -56,6 +56,10 @@ After the hero, each section has one job:
   decides the line count. Only true lockups (`AI / FRIENDLY.`, `A spark, /
   held in orbit.`) and one two-line rhetorical couplet (`AI didn't replace the
   work. / It unlocked it.`) keep a deliberate break. Never one break per word.
+- **A column must justify its width.** If copy is given a wide column, it
+  fills it at a readable measure: `--fs-feature` for narrative blocks, 76ch for
+  prose. Never cap a 2/3 column at 54ch and leave the right half empty. If the
+  measure cannot fill the column, narrow the column instead.
 
 ---
 
@@ -115,6 +119,7 @@ Rules:
 | `--fs-h4` | `clamp(18px, 1.6vw, 22px)` | item headings, FAQ questions |
 | `--fs-lead` | `clamp(16px, 1.3vw, 19px)` | section leads |
 | `--fs-page-lede` | `clamp(18px, 1.5vw, 22px)` | interior page hero standfirst |
+| `--fs-feature` | `clamp(17px, 1.3vw, 19px)` | narrative copy in a wide feature column |
 | `--fs-body` | `16px` | paragraphs, prose, inputs |
 | `--fs-body-s` | `14px` | card copy, secondary paragraphs |
 | `--fs-small` | `13px` | dense copy, table cells, details |
@@ -255,7 +260,11 @@ surfaces.
   clamp.
 - Two-column: `1fr 1fr`, gap `clamp(32px, 5vw, 80px)`.
 - Section head: `1.05fr .95fr`, gap `clamp(32px, 4vw, 64px)`, top-aligned.
-  Never align the lede to the bottom of a multi-line title.
+  Never align the lede to the bottom of a multi-line title. When it stacks
+  (≤980), the lede uses 62ch so it does not leave half the row empty.
+- Three-up text cells (`01` idea) reserve two title lines at ≥981 so the three
+  body paragraphs start on the same baseline; the principle cards do the same
+  at ≥641.
 - Home hero: `min-height: 100svh`, flex column; the copy block centres and the
   signal strip sits on the first fold. Content may grow past one screen (mobile
   always does); the hero is never artificially padded.
@@ -267,10 +276,20 @@ surfaces.
   `--fs-page-lede` and sits directly under it at 62ch. No side-column
   standfirst, no forced line breaks in sentence titles.
 - Mark section (home): `0.7fr / 1.3fr`; the illustration is supporting, the
-  copy is the subject. Showcase capped at 420px so the section cannot outgrow
-  its text.
-- Pillar cards (`02`) use content height; links stay pinned with
+  copy is the subject. The copy fills the 65% column at `--fs-feature`; the
+  three lockups spread across that column (`space-between`) instead of
+  clustering at its left edge. Showcase capped at 420px.
+- Hero copy: `max-width: 660px`, body 60ch; it uses most of the left column
+  instead of leaving a 260px hole before the visual.
+- Document layout (`/standard/`, legal): side TOC 232px + content **820px**;
+  prose 76ch. The content column is sized to the reading measure, not a
+  full-width `1fr` with text clinging to its left edge.
+- Pillar cards (`02`) use content height; copy 40ch; links stay pinned with
   `margin-top:auto`, but there is no `min-height` invented to equalise rows.
+- Three-up card grids (pillars, scan info, placements) go **2-up at 980**,
+  with an odd last card centred at half width, and **1-up at 640**. Never let
+  a 3-up grid collapse to one 900px card holding a 40ch paragraph. The
+  principle grid (about) is 2-up until 640, then 1-up.
 
 **Full-width rule policy.** A rule that touches both viewport edges is a page
 boundary, not a section decoration. The complete list is:
