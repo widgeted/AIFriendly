@@ -150,26 +150,30 @@ decorative: it answers "how much is left" on long pages.
 
 - Layer order is the whole trick and must not change: **spark back piece →
   ribbon ring → dot → spark front piece**. The spark is drawn twice: the back
-  copy carries fill and outline under the ring, the front copy is fill-only,
-  clipped (by a polygon whose edge runs through the ring's hole) to the
-  upper-left half. The two halves have the same fill, so their junction is
-  invisible and never crosses the drawn ribbon. Nothing fades and no mask is
-  used: whatever passes behind the spark is covered by the front piece.
+  copy carries fill and outline under the ring, the front copy (fill AND its
+  own outline copy) is clipped (by a polygon whose edge runs through the ring's
+  hole) to the upper-left half. The outline copy is essential: without it the
+  front fill eats the inner half of the 2-unit silhouette stroke. The two halves
+  have the same fill, so their junction is invisible and never crosses the
+  drawn ribbon. Nothing fades and no mask is used: whatever passes behind the
+  spark is covered by the front piece.
 - The ember dot is omitted below 96px: header/footer 30–36px, favicon, icons,
   lockups (40), statement badges (34) and seals (72) all ship without it. It
   is always present and always ember #DC5000 at 96px and above.
 - At display sizes (≥ 200px, currently hero 460px and the mark section 420px)
-  the mark is alive. The dot rides the ring's complete loop, computed from the
-  artwork's own geometry and verified to lie on the ring everywhere: band
-  (home → elbow), top strip to the pointed tip, behind the spark's upper
-  spike, the crescent (the ring's far side), behind the left spike, and back
-  along the band. SMIL `animateMotion` + `mpath`, `calcMode="paced"`, 14s, the
-  same clock as the gradient swirl. As the dot reaches the pointed tip it is
-  cut by the front piece into a shrinking crescent; it disappears behind the
-  upper spike, rides the crescent with its inner half behind the spark's edge,
-  slips behind the thin left spike and comes out as a growing crescent at the
-  left tip. The two ribbon gradients rotate 14s via SMIL `animateTransform` on
-  `gradientTransform`.
+  the mark is alive. The dot runs on a true ellipse fitted to the artwork's own
+  centreline (centre 178.3,178.9; axes 150×61; rotation −27.5°; mean residual
+  1.4 units), emitted as four cubic arcs. It follows that ellipse strictly all
+  the way around: the lower-right arcs cross in front of the spark and stay
+  visible; the upper-left and left-spike arcs pass behind it and are covered by
+  the front piece (the clip edge is 45–80 units clear of those arcs, so the dot
+  cannot poke out inside the spark). SMIL `animateMotion` + `mpath`, 14s, the
+  same clock as the gradient swirl. Motion uses `keyPoints`/`keyTimes` instead
+  of `paced`: the dot eases through the two tight ends of the ellipse (radius
+  ~25 units) and runs faster along the flanks (~370 units). Measured per-frame
+  turn stays near 1° instead of spiking to 6°; a faster loop alone would make
+  that spike worse, so keep the 14s clock. The two ribbon gradients rotate 14s
+  via SMIL `animateTransform` on `gradientTransform`.
 - Motion is one system: dot and colour travel the same direction at the same
   period, so it reads as orbit, not decoration.
 - Hovering the header brand makes the ribbon's spectrum flow (CSS
@@ -179,6 +183,13 @@ decorative: it answers "how much is left" on long pages.
   parked on the ribbon (`.mark__dot-static`) and stops the hue flow; the
   gradient swirl continues but is a slow colour shift, not movement across
   the page.
+
+## Hero layout
+
+- The hero visual spans both the headline row and the copy row in the grid, so
+  its centre lines up with the centre of the whole hero content (the mark used
+  to sit ~150px low when it only spanned the copy row). At ≤980px the grid
+  collapses and the mark stacks below the copy, centred on its own row.
 
 ## Copy voice
 

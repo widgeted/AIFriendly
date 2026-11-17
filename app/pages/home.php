@@ -29,10 +29,10 @@ foreach ($homeFaqs as $item) {
         <p class="micro"><?= e($h['hero']['micro']) ?></p>
       </div>
 
-      <div class="hero__visual">
-        <div class="hero-mark">
-          <?= mark_svg(460, 'hero-mark__svg', 'spectrum') ?>
-        </div>
+    </div>
+    <div class="hero__visual">
+      <div class="hero-mark">
+        <?= mark_svg(460, 'hero-mark__svg', 'spectrum') ?>
       </div>
     </div>
   </div>
