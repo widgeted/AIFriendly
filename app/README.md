@@ -28,8 +28,10 @@ assets/                CSS, JS, fonts, badges, brand assets
 
 ## Design system
 
-See `app/DESIGN.md` for the tokens, bilingual type scale, component shells
-and the rule policy. `assets/css/site.css` is the implementation.
+See `app/DESIGN-SYSTEM.md` for the layout, spacing, type, colour, radius and
+component rules; it is the single source of truth. `app/DESIGN.md` covers the
+brand, mark construction and palettes. `assets/css/site.css` is the only
+implementation, and its `:root` block is the only place tokens are declared.
 
 ## Routes
 
