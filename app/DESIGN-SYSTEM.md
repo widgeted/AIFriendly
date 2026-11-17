@@ -1,6 +1,6 @@
 # AI Friendly — design system
 
-Version 4.0 · single source of truth for layout, spacing, type, colour,
+Version 4.1 · single source of truth for layout, spacing, type, colour,
 radii, borders, gradients and motion. The brand/mark rules live in
 [`DESIGN.md`](DESIGN.md); this file governs every page shell and component.
 
@@ -25,6 +25,37 @@ one-off pixel value.
    gets its own line-height and tracking tokens.
 6. **Accessible by default.** AA contrast, visible focus, no colour-only
    meaning, no motion required to understand the page.
+
+### 1.1 Page composition
+
+Every page answers three questions in reading order:
+
+1. **What is this?** Eyebrow + title.
+2. **Why should I care?** Lede / standfirst.
+3. **What can I do?** Meta + actions, or the page's primary control.
+
+The page hero is therefore **one vertical column**. A second column is only
+allowed when two different jobs genuinely coexist — a section title beside its
+standfirst, a table beside its contents, a mark beside its copy. It is never
+used to park a sentence-length lede next to a display title.
+
+After the hero, each section has one job:
+
+| Section type | Material |
+|---|---|
+| Argument / narrative (01 idea, 03 mark) | type only, no card |
+| Discrete choices (02 pillars, 04 levels, FAQ) | cards |
+| Evidence / lists (checks, results, audit) | rows with local rules |
+| Closing action | centred band, no new surface |
+
+- **Home** is the brand argument: first screen full height, then 01–04, one
+  idea per section.
+- **Task pages** (`/standard/`, `/scan/`, `/verify/`) lead with the task:
+  title → lede → action → details.
+- Long sentence titles are **never hard-broken with `<br>`**; the measure
+  decides the line count. Only true lockups (`AI / FRIENDLY.`, `A spark, /
+  held in orbit.`) and one two-line rhetorical couplet (`AI didn't replace the
+  work. / It unlocked it.`) keep a deliberate break. Never one break per word.
 
 ---
 
@@ -76,13 +107,14 @@ Rules:
 | Token | Size | Role |
 |---|---|---|
 | `--fs-display` | `clamp(52px, 11vw, 136px)` | home hero, uppercase |
-| `--fs-title` | `clamp(34px, 7.5vw, 104px)` | page hero `h1` |
+| `--fs-title` | `clamp(36px, 5vw, 72px)` | page hero `h1` (zh `clamp(30px, 5vw, 64px)`) |
 | `--fs-h2` | `clamp(26px, 4.6vw, 56px)` | section headings |
 | `--fs-h2-s` | `clamp(28px, 3vw, 42px)` | in-panel headings, legal prose `h2` |
 | `--fs-h3` | `clamp(22px, 2vw, 30px)` | card / row headings |
 | `--fs-h3-lg` | `clamp(24px, 2.4vw, 34px)` | level rows, feature rows |
 | `--fs-h4` | `clamp(18px, 1.6vw, 22px)` | item headings, FAQ questions |
 | `--fs-lead` | `clamp(16px, 1.3vw, 19px)` | section leads |
+| `--fs-page-lede` | `clamp(18px, 1.5vw, 22px)` | interior page hero standfirst |
 | `--fs-body` | `16px` | paragraphs, prose, inputs |
 | `--fs-body-s` | `14px` | card copy, secondary paragraphs |
 | `--fs-small` | `13px` | dense copy, table cells, details |
@@ -222,12 +254,23 @@ surfaces.
 - Section heads use one gap: `margin-bottom: --stack`. Never a per-section
   clamp.
 - Two-column: `1fr 1fr`, gap `clamp(32px, 5vw, 80px)`.
-- Section head: `1.05fr .95fr`, gap `clamp(32px, 4vw, 64px)`, aligned to the
-  baseline of the last line.
+- Section head: `1.05fr .95fr`, gap `clamp(32px, 4vw, 64px)`, top-aligned.
+  Never align the lede to the bottom of a multi-line title.
+- Home hero: `min-height: 100svh`, flex column; the copy block centres and the
+  signal strip sits on the first fold. Content may grow past one screen (mobile
+  always does); the hero is never artificially padded.
+- Pullquote (`01 / The idea`): type-only, no card, vertically centred against
+  the body copy. It is the one deliberately quiet block in a card-heavy page.
 - Card grids: 2 or 3 equal columns, gap `--space-5` (24).
-- Interior page hero: two columns `1.08fr / 0.92fr`. Eyebrow, title and actions
-  on the left; lede and meta on the right; optional preview spans both columns.
-  At ≤980 it collapses to one column in DOM order.
+- Interior page hero: **one reading column**. Eyebrow → title → lede → meta →
+  actions → optional preview. The title is capped at 24ch; the lede is
+  `--fs-page-lede` and sits directly under it at 62ch. No side-column
+  standfirst, no forced line breaks in sentence titles.
+- Mark section (home): `0.7fr / 1.3fr`; the illustration is supporting, the
+  copy is the subject. Showcase capped at 420px so the section cannot outgrow
+  its text.
+- Pillar cards (`02`) use content height; links stay pinned with
+  `margin-top:auto`, but there is no `min-height` invented to equalise rows.
 
 **Full-width rule policy.** A rule that touches both viewport edges is a page
 boundary, not a section decoration. The complete list is:
@@ -344,7 +387,9 @@ One spectrum ramp, two allowed orientations.
 - Field label 11/600 uppercase, `--track-label`.
 - Input: underline only, 2px `--line-strong`, 16px text, padding 12 0;
   focus turns the underline ember. No boxes, no fills.
-- Primary scan input: `clamp(18px, 2vw, 25px)` — the only oversized input.
+- Primary scan input: `clamp(20px, 2.4vw, 30px)` with 56px submit button — the
+  only oversized input. On `/scan/` the form lives in the page hero: it is the
+  page's primary control, not a small field below a poster-sized title.
 - Form grid gap 24; two-column rows collapse at 640.
 
 ### Tables and lists

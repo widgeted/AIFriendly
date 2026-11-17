@@ -230,7 +230,7 @@ return [
         ],
         'ways' => [
             'eyebrow' => '02 / Three ways to say it',
-            'title' => 'Declare.<br>Build.<br>Prove.',
+            'title' => 'Declare. Build. Prove.',
             'lede' => 'A badge is the beginning, not the whole argument. The mark says you are open to AI. The standard describes what that means in practice. The verified mark is for services that agree to be checked.',
             'items' => [
                 ['01', 'For anyone', 'Declare', 'A free badge for the work you ship. Websites, apps, repos, decks, posters, packaging. No sign-up, no paywall, no permission email.', '/badges/', 'Download the kit'],
@@ -304,7 +304,7 @@ return [
     'standard' => [
         'hero' => [
             'eyebrow' => 'The AI Friendly Standard / v0.1 draft',
-            'title' => 'Legible.<br>Operable.<br>Accountable.',
+            'title' => 'Legible. Operable. Accountable.',
             'lede' => 'A practical, open standard for sites and services that want to work with AI agents — without giving up control of their content, data or users.',
             'meta' => ['Version 0.1', 'Published 15 Nov 2026', '24 checks', 'CC BY 4.0'],
             'actions' => ['Run the self-audit', 'Download .md', 'Scan a site'],

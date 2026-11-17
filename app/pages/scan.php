@@ -26,7 +26,7 @@ $scanI18n = [
     'standard_check' => t('common.scan.standard_check'),
 ];
 ?>
-<section class="page-hero">
+<section class="page-hero page-hero--scan">
   <div class="wrap page-hero__inner">
     <p class="eyebrow"><span class="spectrum-dot" aria-hidden="true"></span><?= $s['hero']['eyebrow'] ?></p>
     <h1><?= $s['hero']['title'] ?></h1>
@@ -34,11 +34,6 @@ $scanI18n = [
     <div class="page-meta">
       <?php foreach ($s['hero']['meta'] as $item): ?><span><?= e($item) ?></span><?php endforeach; ?>
     </div>
-  </div>
-</section>
-
-<section class="section section--flush">
-  <div class="wrap">
     <form class="scan-form scan-form--page" action="<?= e(url('/scan/')) ?>" method="get" data-scan-form novalidate>
       <label class="sr-only" for="scan-url"><?= e(t('common.scan.placeholder')) ?></label>
       <input id="scan-url" name="url" type="text" inputmode="url" autocomplete="url" placeholder="<?= e(t('common.scan.placeholder')) ?>" required>
