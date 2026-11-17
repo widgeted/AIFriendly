@@ -135,9 +135,11 @@ decorative: it answers "how much is left" on long pages.
   (#fff6e7 spark + ribbon, #fffaf1 inner ribbon) with an ink #171008 outline,
   no dot. For gradient tiles and other colourful surfaces: one silhouette
   would melt into the background, so boundaries are drawn.
-- Poster two-colour (`mark-poster`): cream #fff6e7 spark, ink #171008 ring,
-  ink outline, no dot. For printed posters and any busy photographic or
-  gradient surface where the spark and the ring must read as two shapes.
+- Poster two-colour (`mark-poster` / `lockup-poster`): cream #fff6e7 spark,
+  ink #171008 ring, ink outline, no dot. For printed posters and any busy
+  photographic or gradient surface where the spark and the ring must read as
+  two shapes. Use this palette consistently on every colourful-surface
+  placement (home placements and the badge preview tile).
 - Mono: favicon and 64px icons, no ember dot. The geometry is the same; the
   mono palette exists so the ribbon does not turn into mud at the smallest
   sizes.

@@ -19,7 +19,7 @@ $badges = require APP_ROOT . '/data/badges.php';
     <div class="badge-preview" aria-hidden="true">
       <div class="badge-preview__tile badge-preview__tile--paper"><img src="/assets/badges/lockup-ink.svg" width="159" height="44" alt=""></div>
       <div class="badge-preview__tile badge-preview__tile--ink"><img src="/assets/badges/lockup-cream.svg" width="159" height="44" alt=""></div>
-      <div class="badge-preview__tile badge-preview__tile--spectrum"><img src="/assets/badges/lockup-flat-cream.svg" width="159" height="44" alt=""></div>
+      <div class="badge-preview__tile badge-preview__tile--spectrum"><img src="/assets/badges/lockup-poster.svg" width="159" height="44" alt=""></div>
     </div>
   </div>
 </section>
